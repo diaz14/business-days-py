@@ -1,0 +1,14 @@
+[project]
+name = "business-days-py"
+version = "0.1.0"
+description = "A small, dependency-free Python library for counting business days between two dates using a holiday calendar."
+requires-python = ">=3.10"
+dependencies = []
+readme = "README.md"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
