@@ -25,3 +25,10 @@ The count is inclusive of both start and end dates. If you need a half-open inte
 `add_days(start, 0)` returns `start` unchanged even if `start` is a weekend or holiday. It does *not* roll forward to the next business day. If you want "the next business day on or after", call `add_days(start, 0)` only when `is_business_day(start)` is true, otherwise `add_days(start, 1)`.
 
 If `start` is after `end` in `count`, the two are swapped and the inclusive span is returned. You will never get a negative number.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
